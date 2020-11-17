@@ -1,4 +1,4 @@
-FROM node:lts-alpine3.12
+FROM node:erbium-alpine3.9
 
 RUN apk --no-cache add \
       bash \
@@ -19,7 +19,9 @@ RUN mkdir -p /usr/local/app
 # Move to the app directory
 WORKDIR /usr/local/app
 
-COPY .
+COPY src .
 
 # Install node-rdkafka
 RUN npm install
+
+CMD node index.js
